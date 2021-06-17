@@ -1,0 +1,38 @@
+{
+  "name": "@jamilservices/namespace-helper",
+  "version": "0.0.3",
+  "description": "Personal namespace help module for javascript.",
+  "main": "main.js",
+  "homepage": "https://github.com/jamilservicos/jamilservices-namespace-helper/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamilservicos/jamilservices-namespace-helper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jamilservicos/jamilservices-namespace-helper/issues"
+  },
+  "author": "Jamil Serviços <jamilservicos@gmail.com> (https://github.com/jamilservicos)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "keywords": [
+    "jamilservices",
+    "namespace",
+    "nodejs",
+    "javascript",
+    "helper"
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/jest -- main.test.js"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "@jamilservices/types-helper": "^0.1.2",
+    "jest": "^27.0.4"
+  }
+}
