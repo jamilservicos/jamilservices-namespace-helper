@@ -18,9 +18,11 @@
 [![Rate on Openbase](https://badges.openbase.com/js/rating/@jamilservices/namespace-helper.svg)](https://openbase.com/js/@jamilservices/namespace-helper?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 
 ![npm (custom registry)](https://img.shields.io/npm/v/@jamilservices/namespace-helper/latest?registry_uri=https%3A%2F%2Fregistry.npmjs.com&logo=npm)
+![npm downloads](https://img.shields.io/npm/dt/@jamilservices/namespace-helper.svg?logo=npm&label=total%20downloads)
+<!--
 ![npm bundle size (version)](https://img.shields.io/bundlephobia/min/@jamilservices/namespace-helper/latest?logo=npm)
 ![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/@jamilservices/namespace-helper/latest?logo=npm)
-![npm downloads](https://img.shields.io/npm/dt/@jamilservices/namespace-helper.svg?logo=npm&label=total%20downloads)
+-->
 
 [![CodeQL](https://github.com/jamilservicos/jamilservices-namespace-helper/workflows/CodeQL/badge.svg)](https://github.com/jamilservicos/jamilservices-namespace-helper/actions?query=workflow:"CodeQL")
 [![Known Vulnerabilities](https://snyk.io/test/github/jamilservicos/jamilservices-namespace-helper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jamilservicos/jamilservices-namespace-helper?targetFile=package.json "Known Vulnerabilities")
