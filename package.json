@@ -31,7 +31,7 @@
     "lodash.set": "^4.3.2"
   },
   "devDependencies": {
-    "@types/node": "^15.12.2",
+    "@types/node": "^16.0.0",
     "@jamilservices/types-helper": "^0.1.2",
     "jest": "^27.0.4"
   }
