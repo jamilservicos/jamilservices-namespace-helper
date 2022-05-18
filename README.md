@@ -59,6 +59,10 @@ yarn add @jamilservices/namespace-helper
 >```
 >mut: true
 >```  
+>**prefix:** *if configured, it will override the default trigger. default: ns*
+>```
+>prefix: 'ns_'
+>```  
 
 #### Simple Usage Example:  
 ~~~javascript

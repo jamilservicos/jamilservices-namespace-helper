@@ -86,7 +86,9 @@ class Namespace {
  * @param {boolean} [config.mut]
  */
 exports = module.exports = (config) => {
-    Object.defineProperty(Object.prototype, 'ns', {
+    $prefix = 'ns';
+    if(config.prefix) $prefix = config.prefix;
+    Object.defineProperty(Object.prototype, $prefix, {
         value: new Namespace(config),
         enumerable: false
     });
