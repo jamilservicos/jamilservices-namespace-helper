@@ -21,7 +21,6 @@ describe("mainTest isolate mode", () => {
         equal((typeof global["nsIsolateModeTest"] === "undefined"), true);
     });
 });
-
 describe("mainTest isolate mode on global mode", () => {
     it('nsGlobalModeTest sets nsIsolateModeTest as dependency?', () => {
         const isolateModeInstance = mainTest({prefix: 'nsIsolateModeTest', isolate: true});
