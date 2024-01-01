@@ -3,25 +3,27 @@
 const {showGeneralStore, setGeneralStoreKey, getGeneralValue} = require("./generalStore");
 const {showDependencieStore, setDependencieStoreKey, getDependencieValue} = require("./dependencieStore");
 const {showConfigStore, setConfigStoreKey, getConfigValue} = require("./configStore");
-const showAllStores = () => {
+const showAllStores = (prefix) => {
     const obj = {};
-    obj['dependencies'] = showDependencieStore();
-    obj['settings'] = showConfigStore();
-    obj['storage'] = showGeneralStore();
+    obj['dependencies'] = showDependencieStore(prefix);
+    obj['settings'] = showConfigStore(prefix);
+    obj['storage'] = showGeneralStore(prefix);
     return {...obj};
 };
+
 /**
  * NameSpace *
  */
-class NameSpace {
+class NameSpaceHelper {
     /**
-     * Constructs an instance of the NameSpace.
+     * Constructs an instance of the NameSpaceHelper.
      * @constructor
      * @memberof module:NameSpaceModule
      * @param {Object} config
      */
     constructor(config) {
-        const {mut} = config;
+        const {mut, prefix} = config;
+        this.prefix = prefix;
         this.mutable = (typeof mut === "boolean" && mut === true);
         /**
          * @private
@@ -53,34 +55,46 @@ class NameSpace {
             enumerable: false,
             configurable: false,
             writable: false,
-            value: showAllStores
+            value: () => showAllStores(this.prefix)
         });
     }
 
     storage = (key, value) => {
-        if(key && value) return setGeneralStoreKey({key,value, mut: this.mutable});
-        if(key) return getGeneralValue(key);
-        return showGeneralStore();
+        if (key && value) return setGeneralStoreKey({
+            key, value, mut: this.mutable, prefix: this.prefix
+        });
+        if (key) return getGeneralValue({
+            prefix: this.prefix, key
+        });
+        return showGeneralStore(this.prefix);
     }
     deps = (key, value) => {
-        if(key && value) return setDependencieStoreKey({key,value, mut: this.mutable});
-        if(key) return getDependencieValue(key);
-        return showDependencieStore();
+        if (key && value) return setDependencieStoreKey({
+            key, value, mut: this.mutable, prefix: this.prefix
+        });
+        if (key) return getDependencieValue({
+            prefix: this.prefix, key
+        });
+        return showDependencieStore(this.prefix);
     }
     settings = (key, value) => {
-        if(key && value) return setConfigStoreKey({key,value, mut: this.mutable});
-        if(key) return getConfigValue(key);
-        return showConfigStore();
+        if (key && value) return setConfigStoreKey({
+            key, value, mut: this.mutable, prefix: this.prefix
+        });
+        if (key) return getConfigValue({
+            prefix: this.prefix, key
+        });
+        return showConfigStore(this.prefix);
     }
 }
 
 /**
  * @private
  * @ignore
- * @memberof NameSpace
+ * @memberof module:NameSpaceModule
  * @type {Symbol}
  */
-Object.defineProperty(NameSpace, Symbol.hasInstance, {
+Object.defineProperty(NameSpaceHelper, Symbol.hasInstance, {
     /**
      * Getter function for the custom `instanceof` behavior.
      *
@@ -100,5 +114,5 @@ Object.defineProperty(NameSpace, Symbol.hasInstance, {
  * @module NameSpaceModule
  */
 exports = module.exports = {
-    ...{NameSpace}
+    ...{NameSpaceHelper}
 }
