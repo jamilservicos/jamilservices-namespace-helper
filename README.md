@@ -47,6 +47,27 @@ Should you face any challenges or have queries about transitioning to version 1.
 
 Your feedback is invaluable in helping us refine and enhance @jamilservices/types-helper.
 
+#
+#### <span id="import-module">Import module</span>
+[(go to top)](#jamilservices-namespace-helper)
+
+~~~javascript
+ require("@jamilservices/namespace-helper")();
+~~~   
+
+or
+
+~~~javascript
+ const customVariableName = require("@jamilservices/namespace-helper");
+customVariableName();
+~~~   
+
+or
+
+~~~javascript
+ import customVariableName from "@jamilservices/namespace-helper";
+customVariableName();
+~~~   
 
 
 #
