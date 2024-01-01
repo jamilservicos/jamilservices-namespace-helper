@@ -20,11 +20,7 @@
 !examples/
 !examples/**
 
-!release.config.cjs
-
 !jsdoc.json
-
-!benchmark.js
 
 .npmrc
 
