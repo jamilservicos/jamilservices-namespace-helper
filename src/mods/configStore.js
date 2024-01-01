@@ -2,27 +2,30 @@
 
 const configStore = {};
 
-const showConfigStore = () => {
+const showConfigStore = (prefix) => {
     try {
-        if(Object.keys(configStore).length > 0) return {...configStore};
+        if (configStore[prefix] && Object.keys(configStore[prefix]).length > 0) return {...configStore[prefix]};
     } catch {
-        console.error("Error on showConfigStore");
+        console.error("Error on showConfigStore", prefix);
     }
     return {};
 };
 
-const changeValue = (key,value) => {
-    configStore[key.toString()] = value;
+const changeValue = (data) => {
+    const {prefix, key, value} = data;
+    configStore[prefix][key.toString()] = value;
     return true;
 };
 
 const setConfigStoreKey = (data) => {
     try {
-        const {key, value, mut} = data;
-        if(typeof value === "undefined" || typeof key === "undefined") return false;
-        if ((typeof configStore[key] === "undefined")
-            || (mut && configStore[key])) {
-            return changeValue(key, value);
+        const {key, value, mut, prefix} = data;
+        if(typeof prefix === "undefined") return false;
+        if (typeof configStore[prefix] === "undefined") configStore[prefix] = {};
+        if (typeof value === "undefined" || typeof key === "undefined") return false;
+        if ((typeof configStore[prefix][key] === "undefined")
+            || (mut && configStore[prefix][key])) {
+            return changeValue({prefix, key, value});
         }
     } catch {
         console.error("Error on setConfigStoreKey:", data);
@@ -30,11 +33,13 @@ const setConfigStoreKey = (data) => {
     return false;
 };
 
-const getConfigValue = (key) => {
+const getConfigValue = (data) => {
     try {
-        if(key && configStore[key]) return configStore[key];
+        const {key, prefix} = data;
+        if ((prefix) && (typeof configStore[prefix] === "undefined")) return undefined;
+        if (key && configStore[prefix][key]) return configStore[prefix][key];
     } catch {
-        console.error("Error on getConfigValue:", key);
+        console.error("Error on getConfigValue:", data);
     }
     return undefined;
 };
