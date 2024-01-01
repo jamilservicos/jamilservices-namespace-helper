@@ -68,7 +68,62 @@ or
  import customVariableName from "@jamilservices/namespace-helper";
 customVariableName();
 ~~~   
+#
 
+### Object Parameters:   
+
+* **mut:** *if set to "true", it will activate the mutability of stores. default: false*
+
+```javascript
+require("@jamilservices/namespace-helper")({
+    mut: true
+});
+```     
+
+* **prefix:** *if configured, will override the default trigger. default: ns*
+
+```javascript
+require("@jamilservices/namespace-helper")({
+    prefix: 'nameSpacePrefixExample'
+});
+```   
+
+* **isolate:** *if set to "true", will only create a local instance, without automatically setting it to global. default: false*
+
+```javascript
+require("@jamilservices/namespace-helper")({
+    isolate: true
+});
+```   
+#
+### Object Methods:   
+
+* **deps:** **organize all dependencies for injection.**
+
+```javascript
+nameSpacePrefixExample.deps("testDepencyName", (test) => console.log("testDepencyName deps:", test));
+nameSpacePrefixExample.deps("testDepencyName")("testString");
+```  
+
+* **storage:** **organizes all variables for global access.**
+
+```javascript
+nameSpacePrefixExample.storage("testGeneralName", "only one test");
+console.log(nameSpacePrefixExample.storage("testGeneralName"));
+```  
+
+* **settings:** **organizes all settings for global access.**   
+
+```javascript
+nameSpacePrefixExample.settings("testApiKeyFromEnv", process.env.TESTAPIKEY);
+console.log(nameSpacePrefixExample.settings("testApiKeyFromEnv"));
+```  
+
+* **show:** **overview of all stores saved in the namespace**   
+
+```javascript
+nameSpacePrefixExample.show();
+```  
 
 #
 ### <span id="license">License</span>
