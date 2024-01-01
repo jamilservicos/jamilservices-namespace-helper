@@ -9,19 +9,37 @@ const localNS = require("../../..")({
     isolate: true
 });
 
-const dependencyLocalExample = require("./dependencyExample");
+const dependencyFromInstanceExample = require("./dependencyFromInstanceExample");
+const dependencyFromParamExample = require("./dependencyFromParamExample");
 console.log("\n===================\n");
 console.log("=== no deps added ===");
 console.log("\n===================\n");
 
-dependencyLocalExample("dependencyLocalExample");
+dependencyFromInstanceExample("dependencyLocalExample");
 
 console.log("\n===================\n");
 console.log("=== dependencyLocalExample deps added ===");
 console.log("\n===================\n");
 
-localNS.deps("dependencyLocalExample", dependencyLocalExample);
+localNS.deps("dependencyLocalExample", dependencyFromInstanceExample);
 
-dependencyLocalExample("dependencyLocalExample");
 console.log("\n===================\n");
-dependencyLocalExample();
+console.log("=== dependencyLocalExample from Instance ===");
+console.log("\n===================\n");
+
+dependencyFromInstanceExample("dependencyLocalExample");
+console.log("\n===================\n");
+dependencyFromInstanceExample();
+
+console.log("\n===================\n");
+console.log("=== dependencyLocalExample from Parameter ===");
+console.log("\n===================\n");
+
+dependencyFromParamExample({
+    circular: "dependencyLocalExample",
+    instance: localNS
+});
+console.log("\n===================\n");
+dependencyFromParamExample({
+    instance: localNS
+});
