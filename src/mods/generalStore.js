@@ -2,27 +2,30 @@
 
 const generalStore = {};
 
-const showGeneralStore = () => {
+const showGeneralStore = (prefix) => {
     try {
-        if(Object.keys(generalStore).length > 0) return {...generalStore};
+        if (generalStore[prefix] && Object.keys(generalStore[prefix]).length > 0) return {...generalStore[prefix]};
     } catch {
-       console.error("Error on showGeneralStore");
+        console.error("Error on showGeneralStore", prefix);
     }
     return {};
 };
 
-const changeValue = (key,value) => {
-    generalStore[key.toString()] = value;
+const changeValue = (data) => {
+    const {prefix, key, value} = data;
+    generalStore[prefix][key.toString()] = value;
     return true;
 };
 
 const setGeneralStoreKey = (data) => {
     try {
-        const {key, value, mut} = data;
-        if(typeof value === "undefined" || typeof key === "undefined") return false;
-        if ((typeof generalStore[key] === "undefined")
-            || (mut && generalStore[key])) {
-            return changeValue(key, value);
+        const {key, value, mut, prefix} = data;
+        if(typeof prefix === "undefined") return false;
+        if (typeof generalStore[prefix] === "undefined") generalStore[prefix] = {};
+        if (typeof value === "undefined" || typeof key === "undefined") return false;
+        if ((typeof generalStore[prefix][key] === "undefined")
+            || (mut && generalStore[prefix][key])) {
+            return changeValue({prefix, key, value});
         }
     } catch {
         console.error("Error on setGeneralStoreKey:", data);
@@ -30,11 +33,15 @@ const setGeneralStoreKey = (data) => {
     return false;
 };
 
-const getGeneralValue = (key) => {
+const getGeneralValue = (data) => {
     try {
-        if(key && generalStore[key]) return generalStore[key];
+        const {key, prefix} = data;
+        if (prefix) {
+            if (typeof generalStore[prefix] === "undefined") return undefined;
+            if (key && generalStore[prefix][key]) return generalStore[prefix][key];
+        }
     } catch {
-        console.error("Error on getGeneralValue:", key);
+        console.error("Error on getGeneralValue:", data);
     }
     return undefined;
 };
