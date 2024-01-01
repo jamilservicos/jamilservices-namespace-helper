@@ -14,7 +14,7 @@
   "author": "Jamil Serviços <jamilservicos@gmail.com> (https://github.com/jamilservicos)",
   "license": "MIT",
   "engines": {
-    "node": ">=14"
+    "node": ">=20.10.x"
   },
   "keywords": [
     "jamilservices",
@@ -24,15 +24,13 @@
     "helper"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/jest -- main.test.js"
+    "docs": "npx jsdoc -c jsdoc.json",
+    "tests": "node --test --test-reporter spec -r ./test/setup.js ./src/*.spec.js ./src/**/*.spec.js",
+    "tests:ci": "node --test --test-reporter spec -r ./test/setup.js ./src/*.spec.js ./src/**/*.spec.js",
+    "examples:all": "node examples/use_cases"
   },
-  "dependencies": {
-    "lodash.get": "^4.4.2",
-    "lodash.set": "^4.3.2"
-  },
-  "devDependencies": {
-    "@jamilservices/types-helper": "^0.1.3",
-    "@types/node": "^16.3.3",
-    "jest": "^28.1.0"
+  "directories": {
+    "example": "examples",
+    "test": "test"
   }
 }
