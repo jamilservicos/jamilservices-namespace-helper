@@ -101,7 +101,9 @@ require("@jamilservices/namespace-helper")({
 * **deps:** **organize all dependencies for injection.**
 
 ```javascript
-nameSpacePrefixExample.deps("testDepencyName", (test) => console.log("testDepencyName deps:", test));
+nameSpacePrefixExample.deps("testDepencyName", (test) => {
+    console.log("testDepencyName deps:", test);
+});
 nameSpacePrefixExample.deps("testDepencyName")("testString");
 ```  
 
