@@ -1,6 +1,6 @@
 "use strict";
 
-const {NameSpace} = require("./mods/nameSpace");
+const {NameSpaceHelper} = require("./mods/nameSpace");
 
 let instances = {};
 
@@ -12,11 +12,13 @@ const autoLoaderNameSpace = (config = {}) => {
         const {mut, prefix, isolate} = config;
         if(isolate) enableGlobal = false;
         if (typeof prefix === "string") prefixGlobal = prefix.toString();
-        if (typeof instances[prefixGlobal] === "undefined") instances[prefixGlobal] = new NameSpace({mut, prefix: prefixGlobal});
+        if (typeof instances[prefixGlobal] === "undefined") {
+            instances[prefixGlobal] = new NameSpaceHelper({mut, prefix: prefixGlobal});
+        }
         if (enableGlobal) global[prefixGlobal] = instances[prefixGlobal];
         return instances[prefixGlobal];
     } catch {
-        console.error("Error on init NameSpace");
+        console.error("Error on init NameSpaceHelper");
     }
     return {};
 };
