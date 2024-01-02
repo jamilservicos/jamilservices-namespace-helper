@@ -82,14 +82,14 @@ const setGeneralStoreKey = (data) => {
  *
  * This function returns the value associated with a given key in the generalStore, if it exists.
  *
- * @function getGeneralValue
+ * @function getGeneralStoreValue
  * @memberof module:GeneralStoreModule
  * @param {Object} data - The object containing the prefix and key to retrieve the value for.
  * @param {string} data.key - The key to retrieve the value for.
  * @param {string} data.prefix - The prefix key for the store to retrieve from.
  * @returns {*} - The value associated with the key, or undefined if not found or on error.
  */
-const getGeneralValue = (data) => {
+const getGeneralStoreValue = (data) => {
     try {
         const {key, prefix} = data;
         if (prefix) {
@@ -112,5 +112,5 @@ const getGeneralValue = (data) => {
 exports = module.exports = {
     ...{showGeneralStore},
     ...{setGeneralStoreKey},
-    ...{getGeneralValue}
+    ...{getGeneralStoreValue}
 };
