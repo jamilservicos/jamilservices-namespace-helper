@@ -3,9 +3,9 @@
 /**
  * Imports the required store management functions from various modules.
  */
-const {showGeneralStore, setGeneralStoreKey, getGeneralValue} = require("./generalStore");
-const {showDependencieStore, setDependencieStoreKey, getDependencieValue} = require("./dependencieStore");
-const {showConfigStore, setConfigStoreKey, getConfigValue} = require("./configStore");
+const {showGeneralStore, setGeneralStoreKey, getGeneralStoreValue} = require("./generalStore");
+const {showDependencieStore, setDependencieStoreKey, getDependencieStoreValue} = require("./dependencieStore");
+const {showConfigStore, setConfigStoreKey, getConfigStoreValue} = require("./configStore");
 
 /**
  * Shows the combined content from all stores for a specific prefix.
@@ -49,7 +49,13 @@ class NameSpaceHelper {
          * @name mutable
          * @memberof module:NameSpaceHelperModule
          */
-        Object.defineProperty(this, 'mutable', {enumerable: false});
+        Object.defineProperty(this, 'mutable', {enumerable: false});/**
+         * @private
+         * @type {string}
+         * @name prefix
+         * @memberof module:NameSpaceHelperModule
+         */
+        Object.defineProperty(this, 'prefix', {enumerable: false});
         /**
          * @private
          * @type {SymbolConstructor}
@@ -88,7 +94,7 @@ class NameSpaceHelper {
         if (key && value) return setGeneralStoreKey({
             key, value, mut: this.mutable, prefix: this.prefix
         });
-        if (key) return getGeneralValue({
+        if (key) return getGeneralStoreValue({
             prefix: this.prefix, key
         });
         return showGeneralStore(this.prefix);
@@ -104,7 +110,7 @@ class NameSpaceHelper {
         if (key && value) return setDependencieStoreKey({
             key, value, mut: this.mutable, prefix: this.prefix
         });
-        if (key) return getDependencieValue({
+        if (key) return getDependencieStoreValue({
             prefix: this.prefix, key
         });
         return showDependencieStore(this.prefix);
@@ -120,7 +126,7 @@ class NameSpaceHelper {
         if (key && value) return setConfigStoreKey({
             key, value, mut: this.mutable, prefix: this.prefix
         });
-        if (key) return getConfigValue({
+        if (key) return getConfigStoreValue({
             prefix: this.prefix, key
         });
         return showConfigStore(this.prefix);
