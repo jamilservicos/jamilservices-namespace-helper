@@ -1,11 +1,11 @@
 "use strict";
 
-const nameSpaceTest = require("./nameSpace");
+const nameSpaceHelperTest = require("./nameSpaceHelper");
 
 const {describe, it} = require("node:test");
 const {equal} = require("node:assert");
-describe("nameSpaceTest imports", () => {
+describe("nameSpaceHelperTest imports", () => {
     it('import is object?', () => {
-        equal((typeof nameSpaceTest === "object"), true);
+        equal((typeof nameSpaceHelperTest === "object"), true);
     });
 });
