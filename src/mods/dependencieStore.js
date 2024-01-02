@@ -84,14 +84,14 @@ const setDependencieStoreKey = (data) => {
  *
  * This function returns the value associated with a given key in the dependencieStore, if it exists.
  *
- * @function getDependencieValue
+ * @function getDependencieStoreValue
  * @memberof module:DependencieStoreModule
  * @param {Object} data - The object containing the prefix and key to retrieve the value for.
  * @param {string} data.key - The key to retrieve the value for.
  * @param {string} data.prefix - The prefix key for the dependency to retrieve from.
  * @returns {*} - The value associated with the key, or undefined if not found or on error.
  */
-const getDependencieValue = (data) => {
+const getDependencieStoreValue = (data) => {
     try {
         const {key, prefix} = data;
         if (prefix) {
@@ -115,5 +115,5 @@ const getDependencieValue = (data) => {
 exports = module.exports = {
     ...{showDependencieStore},
     ...{setDependencieStoreKey},
-    ...{getDependencieValue}
+    ...{getDependencieStoreValue}
 };
