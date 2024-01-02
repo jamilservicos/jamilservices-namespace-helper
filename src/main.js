@@ -1,6 +1,6 @@
 "use strict";
 
-const {NameSpaceHelper} = require("./mods/nameSpace");
+const {NameSpaceHelper} = require("./mods/nameSpaceHelper");
 
 let instances = {};
 
