@@ -28,6 +28,8 @@ npm install
 The examples are organized into subdirectories, each representing a specific use case or functionality:
 
 - `use_cases/`: Contains individual use cases showcasing different features.
+    - `use_cases/globalMode/`: Demonstrates how to work as a global module.
+    - `use_cases/localMode/`: Demonstrates how to work as a local module (isolation option enabled).
 
 # 
 ## <span id="use-cases">Use Cases</span>
@@ -43,4 +45,7 @@ The examples are organized into subdirectories, each representing a specific use
 To run an example, navigate to the aplication directory and execute the script:
 
 ```bash
+npm examples:local
+npm examples:global
 npm run examples:all
+```
