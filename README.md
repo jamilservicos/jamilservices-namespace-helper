@@ -5,6 +5,9 @@
 - [Examples](https://github.com/jamilservicos/jamilservices-namespace-helper/tree/main/examples/)
 - [Installation ways](#installation-ways)
 - [Important Upgrade Notice for Version 1.0.0](#upgrade-notice)
+- [Import module](#import-module)
+- [Object Parameters](#object-parameters)
+- [Object Methods](#object-methods)
 - [License](#license)
 - [Technologies](#technologies)
 #
@@ -70,7 +73,8 @@ customVariableName();
 ~~~   
 #
 
-### Object Parameters:   
+#### <span id="object-parameters">Object Parameters</span>
+[(go to top)](#jamilservices-namespace-helper)
 
 * **mut:** *if set to "true", it will activate the mutability of stores. default: false*
 
@@ -96,7 +100,9 @@ require("@jamilservices/namespace-helper")({
 });
 ```   
 #
-### Object Methods:   
+#### <span id="object-methods">Object Methods</span>
+[(go to top)](#jamilservices-namespace-helper)
+
 
 * **deps:** **organize all dependencies for injection.**
 
