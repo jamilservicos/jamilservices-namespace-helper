@@ -27,6 +27,8 @@
     "docs": "npx jsdoc -c jsdoc.json",
     "tests": "node --test --test-reporter spec -r ./test/setup.js ./src/*.spec.js ./src/**/*.spec.js",
     "tests:ci": "node --test --test-reporter spec -r ./test/setup.js ./src/*.spec.js ./src/**/*.spec.js",
+    "examples:local": "node examples/use_cases/localMode",
+    "examples:global": "node examples/use_cases/globalMode",
     "examples:all": "node examples/use_cases"
   },
   "directories": {
